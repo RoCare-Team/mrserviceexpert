@@ -113,9 +113,9 @@ const Cart = ({ cartLoaded }) => {
     const payload = { service_id, type, cid, quantity };
 
 
+ const res = await fetch("https://waterpurifierservicecenter.in/customer/ro_customer/add_to_cart.php", {
 
-    const res = await fetch("https://waterpurifierservicecenter.in/customer/ro_customer/add_to_cart.php", {
-
+   
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

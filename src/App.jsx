@@ -35,6 +35,7 @@ import Blog from "./components/blogs/Blog";
 import BlogContent from "./components/pages/blogContent/BlogContent";
 import FaqAccordion from "./components/Faq/faq";
 import { ToastContainer, toast } from 'react-toastify';
+import Servicess from "./components/pages/Services/servicess";
 
 
 
@@ -64,9 +65,10 @@ function App() {
         <Route path="/checkout" element={<CheckOut />} />
         <Route path="/service/ro-service" element={<ServicePage />} />
         {/* <Route path="/ro-service" element={<Navigate to="/ro-service/delhi" />} /> */}
-        <Route path="/service/ro-service/:state" element={<ServicePage />} />
+        <Route path="/service/:state/ro-water-purifier" element={<ServicePage />} />
         <Route path="/:brand/service/ro-service/:state" element={<ServicePage />} />
         <Route path="/service/Washing-service" element={<WashingPage />} />
+        <Route path="/service" element={<Servicess/>}/>
 
         <Route path="/home/mumbai" element={<StateHome />} />
 

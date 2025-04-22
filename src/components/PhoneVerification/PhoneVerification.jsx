@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Modal, Box } from '@mui/material';
+import { Modal, Box, CircularProgress } from '@mui/material';
 import CongratsModal from '../modals/CongratsModal';
 import { Await, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -18,6 +18,7 @@ const PhoneVerification = ({ onVerificationComplete, showModal, setShowModal }) 
     const [name, setName] = useState(false);
     const [email, setEmail] = useState(false);
     const [newaddress, setNewaddress] = useState('');
+    const [isLoading,setIsLoading]=useState(false);
 
     const [showCongrats, setShowCongrats] = useState(false);
 
@@ -181,7 +182,7 @@ localStorage.setItem('cart_total_price', data.total_cart_price || 0);
         if (phoneNumber.length === 10 && /^\d{10}$/.test(phoneNumber)) {
 
             try {
-
+              setIsLoading(true);
                 const res = await fetch("https://waterpurifierservicecenter.in/customer/ro_customer/roservice_sendotp.php", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -204,6 +205,9 @@ localStorage.setItem('cart_total_price', data.total_cart_price || 0);
             } catch (error) {
                 toast.error("Error:", error);
                 setOtpRes("Error connecting to server");
+            }
+            finally {
+                setIsLoading(false);
             }
 
         } else if (phoneNumber.length !== 10) {
@@ -326,15 +330,23 @@ localStorage.setItem('cart_total_price', data.total_cart_price || 0);
                                 <p className="text-red-500 text-sm mt-1">{phoneError}</p>
                             )}
 
-                            <button
+<button
                                 onClick={handlePhoneSubmit}
-                                className={`w-full py-3 rounded-lg font-medium mt-4 transition ${isPhoneValid
-                                    ? 'bg-indigo-600 text-white hover:bg-indigo-700'
-                                    : 'bg-gray-200 text-gray-500 hover:bg-gray-300'
-                                    }`}
-                                disabled={!isPhoneValid}
+                                className={`w-full py-3 rounded-lg font-medium mt-4 transition flex items-center justify-center ${
+                                    isPhoneValid
+                                        ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                                        : 'bg-gray-200 text-gray-500 hover:bg-gray-300'
+                                }`}
+                                disabled={!isPhoneValid || isLoading}
                             >
-                                Continue
+                                {isLoading ? (
+                                    <>
+                                        <CircularProgress size={20} color="inherit" style={{ marginRight: '8px' }} />
+                                        <span>Sending OTP...</span>
+                                    </>
+                                ) : (
+                                    'Continue'
+                                )}
                             </button>
                             {/* /privacy-and-policy */}
                             <div>

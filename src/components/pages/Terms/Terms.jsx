@@ -4,6 +4,7 @@ import BrandServices from '../../brandServices/BrandServices';
 import StateLinks from '../../stateLinks/StateLinks';
 import BasicDetails from '../../modals/BasicDetails';
 import FaqAccordion from '../../Faq/faq';
+import { data } from 'react-router-dom';
 // import PaymentModal from '../../modals/paymentModal';
 // import PaymentModal from '../../modals/PaymentModal';
 
@@ -13,6 +14,25 @@ function Terms() {
   
     // const handleOpen = () => setOpen(true);
     // const handleClose = () => setOpen(false);
+
+    const handleCart =()=>{
+
+        const city="delhi";
+        const cat="ro-water-purifier"
+        fetch('http://mrserviceexpert.com/webapis/get_city_category_data.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ city,cat })
+        })
+        .then(res => res.json())
+        .then(data => console.log("Backend Response:", data))
+        .catch(err => console.error("Error sending city to backend:", err));
+
+        console.log(data);
+        
+    }
 
 
     return (
@@ -28,8 +48,12 @@ function Terms() {
                 <h3 className="termsTitle">Restrictions.</h3>
                 <p>You may not: (i) remove any copyright, trademark or other proprietary notices from any portion of the Services; (ii) reproduce, modify, prepare derivative works based upon, distribute, license, lease, sell, resell, transfer, publicly display, publicly perform, transmit, stream, broadcast or otherwise exploit the Services except as expressly permitted by RO Care India; (iii) decompile, reverse engineer or disassemble the Services except as may be permitted by applicable law; (iv) link to, mirror or frame any portion of the Services; (v) cause or launch any programs or scripts for the purpose of scraping, indexing, surveying, or otherwise data mining any portion of the Services or unduly burdening or hindering the operation and/or functionality of any aspect of the Services; or (vi) attempt to gain unauthorized access to or impair any aspect of the Services or its related systems or networks.</p>
             </div>
+
+            {/* <button onClick={handleCart}>london me taxi chalegye</button> */}
 {/*             
-            <button onClick={handleOpen}>Open Payment Details</button>
+
+
+            // <button onClick={handleOpen}>Open Payment Details</button>
       <PaymentModal 
         open={open} 
         handleClose={handleClose}/> */}
