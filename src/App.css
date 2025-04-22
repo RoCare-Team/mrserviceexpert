@@ -533,11 +533,52 @@ a {
   width: 85px;
 
 }
+.innerState{
+  padding: 14px;
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 12px;
+  flex-direction: column;
+}
 
+.innerState h2{
+  font-size: 24px;
+}
+.innerState p{
+  font-size: 20px;
+}
 .common-login-spacing {
   margin-top: 20px;
 }
-
+.cities-grid{
+  border-radius: 15px;
+  display: flex;
+  /* background-color: rgb(203, 182, 182); */
+  background-color: white;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-block: 23px;
+  padding-inline: 15px;
+  
+}
+.city-link{
+  color: #333;
+}
+.contact-info-heading p{
+ font-size: 24px;
+}
+.description{
+  padding: 14px;
+  background-color: white;
+  border-radius: 12px;
+  margin-top: 24px;
+}
+.descriptionTitle{
+  font-size: 23px;
+}
+.descriptionPara{
+  color: #a3a0a0;
+}
 .active-feature {
   margin-top: -30px;
 }

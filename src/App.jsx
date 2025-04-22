@@ -26,6 +26,7 @@ import Jobs from "./components/jobs/Jobs";
 
 //state home page 
 import StateHome from "./components/pages/stateHome/StateHome";
+import State from "./components/pages/states/states";
 
 // Images
 import LoaderImg from "./assets/images/logo.png";
@@ -71,6 +72,7 @@ function App() {
         <Route path="/service" element={<Servicess/>}/>
 
         <Route path="/home/mumbai" element={<StateHome />} />
+        <Route path="/:city/:category" element={<State/>} />
 
         <Route path="/blogs" element={<Blog />} />
         <Route path="/blogs/1/ro-water-main-stages-of-ro-plant-process-and-health-benefits" element={<BlogContent />} />

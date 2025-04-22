@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { data, Link, useLocation } from 'react-router-dom';
 
 function StateLinks() {
     const location = useLocation();
+
+    // const [pageData,setPageData]=useState([]);
 
     // useEffect(() => {
     //     // Runs every time the URL changes
@@ -24,31 +26,37 @@ function StateLinks() {
         
     // }, [location.pathname]);
 
-    useEffect(() => {
-        // Full pathname
-        const url = location.pathname;
+    // useEffect(() => {
+    //     // Full pathname
+    //     const url = location.pathname;
     
-        // Extract city name from pathname
-        const parts = url.split('/');
-        const city = parts[2];
+    //     // Extract city name from pathname
+    //     const parts = url.split('/');
+    //     const city = parts[2];
         
-        const cat=parts[3];
-        // parts[0] is '', parts[1] is 'service', parts[2] is city
+    //     const cat=parts[3];
+    //     // parts[0] is '', parts[1] is 'service', parts[2] is city
     
-        if (city) {
-            fetch('http://rocareindia.online/web_api/get_page_data.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ city,cat })
-            })
-            .then(res => res.json())
-            .then(data => console.log("Backend Response:", data))
-            .catch(err => console.error("Error sending city to backend:", err));
-        }
-    }, [location.pathname]);
-    
+    //     if (city) {
+    //         fetch('http://rocareindia.online/web_api/get_page_data.php', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ city,cat })
+    //         })
+    //         .then(res => res.json())
+    //         .then(data => console.log("Backend Response:", data))
+    //         .catch(err => console.error("Error sending city to backend:", err));
+    //         // setPageData(JSON.stringify(setPageData));
+    //         // const display = () =>{
+    //         //     // console.log(data.banner);
+    //         // }
+    //         // const handleFunction=()=>{
+
+    //         // }
+    //     }
+    // }, [location.pathname]);
 
     const State = ['Delhi', 'Mumbai', 'Bangalore', 'Hyderabad', 'Ahmedabad', 'Chennai',
         'Kolkata', 'Noida', 'Ghaziabad', 'Faridabad', 'Surat', 'Pune',
